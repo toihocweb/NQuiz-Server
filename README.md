@@ -1,1 +1,1 @@
-# NQuiz-Server
+NQuiz-Server

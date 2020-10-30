@@ -1,0 +1,82 @@
+POST http://localhost:3000/api/v1/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "email":"buidinhnhat2009@gmail.com",
+    "password" :"123456",
+    "name" : "admin"
+}
+
+### login
+POST http://localhost:3000/api/v1/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email":"buidinhnhat2009@gmail.com",
+    "password" :"123456"
+}
+
+### check refresh token
+POST http://localhost:3000/api/v1/auth/token HTTP/1.1
+Content-Type: application/json
+
+{
+    "token":"3251256e72b53a0f3684f2aaa8d5451f12e6761fd42311508d847fa396f0f0c2"
+}
+
+### get role
+GET http://localhost:3000/api/v1/role
+
+### post role 
+POST http://localhost:3000/api/v1/role HTTP/1.1
+Content-Type: application/json
+
+{
+    "role_name":"supper_admin",
+    "role_desc" :"Admin perm"
+}
+
+
+### delete all role 
+DELETE http://localhost:3000/api/v1/role HTTP/1.1
+
+### delete all user
+DELETE http://localhost:3000/api/v1/user
+
+### reset password 
+PUT http://localhost:3000/api/v1/auth/resetpassword/61ac23944aba6001a2bfe1d5f5de4e5df87c8ea5 HTTP/1.1
+Content-Type: application/json
+
+{
+    "password" : "nhatdaica"
+}
+
+### forgot password
+POST http://localhost:3000/api/v1/auth/forgotpassword HTTP/1.1
+Content-Type: application/json
+
+{
+    "email":"buidinhnhat2009@gmail.com"
+}
+
+#### update password
+PUT http://localhost:3000/api/v1/auth/updatepassword HTTP/1.1
+Content-Type: application/json
+
+{
+    "currentPassword":"123422",
+    "newPassword": "123456"
+}
+
+
+### get all user
+GET http://localhost:3000/api/v1/user
+
+### delete user by id
+DELETE http://localhost:3000/api/v1/user/5f8a12f5b94b992d64143082
+
+### get current user
+GET http://localhost:3000/api/v1/auth/current
+
+### confirm mail
+GET http://localhost:3000/api/v1/auth/confirmemail?token=caa94a9967346e58bc890e9e65b3ce8d3f5a7325.d99297bc2715cedf5bb1e639757ce7a53008605dcea79b55bf9e12398adfda88430b859bdd9cb07aa71292ce02ae9ef0e10b30b614af96cd742700c6633f6cb21d288313ebe8e85e814090cda6430c9152488c89c3588b31301e4d43ce0ae77495b431ed
