@@ -8,7 +8,6 @@ import {
   forgotPassword,
   resetPassword,
   updatePassword,
-  checkRefreshToken,
 } from '../controllers/AuthController';
 import { protect } from '../middleware/auth';
 
@@ -20,7 +19,6 @@ router.get('/confirmemail', confirmEmail);
 router.post('/forgotpassword', forgotPassword);
 router.put('/updatepassword', protect, updatePassword);
 router.put('/resetpassword/:resettoken', resetPassword);
-router.post('/token', checkRefreshToken);
 router.get('/logout', logout);
 router.get('/current', protect, getCurrentUser);
 

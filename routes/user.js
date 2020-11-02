@@ -6,8 +6,7 @@ import { protect } from '../middleware/auth';
 
 const router = express.Router();
 
-router.use(protect);
-router.delete('/', deleteAllUsers);
+// router.use(protect);
 router
   .route('/')
   .delete(deleteAllUsers)

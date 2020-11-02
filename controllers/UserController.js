@@ -10,8 +10,8 @@ const router = express.Router();
  * @author Nhat Bui
  */
 export const deleteAllUsers = asyncMiddleware(async (req, res) => {
-  const userSv = await userSv.init();
-  await userService.deleteAllUser();
+  const userSv = await userService.init();
+  await userSv.deleteAllUser();
   res.status(200).json({
     success: true,
     data: {},

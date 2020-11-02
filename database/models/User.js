@@ -7,6 +7,7 @@ const userSchema = new Schema({
   name: {
     type: String,
     required: true,
+    minlength: 3
   },
   email: {
     type: String,
@@ -28,12 +29,6 @@ const userSchema = new Schema({
   resetPasswordExpire: Date,
   confirmEmailToken: String,
   isEmailConfirmed: {
-    type: Boolean,
-    default: false,
-  },
-  twoFactorCode: String,
-  twoFactorCodeExpire: Date,
-  twoFactorEnable: {
     type: Boolean,
     default: false,
   },

@@ -20,14 +20,14 @@ export const register = asyncMiddleware(async (req, res) => {
   const emailSv = EmailService.init();
 
   const newUser = await userSv.createNewUser(email, name, password);
-  // if (newUser) {
-  //   const confirmToken = userSv.generateEmailConfirmToken();
-  //   // console.log(confirmToken);
-  //   const confirmUrl = `${req.protocol}://${req.get('host')}/api/v1/auth/confirmemail?token=${confirmToken}`;
-  //   await emailSv.sendEmail(email, 'Hello CC', confirmUrl);
-  // }
 
-  res.status(201).json(new SuccessResponse(201, 'Please check your mail ,and confirm your password', newUser));
+  if (newUser) {
+    const confirmToken = userSv.generateEmailConfirmToken();
+    const confirmUrl = `${req.protocol}://${req.get('host')}/api/v1/auth/confirmemail?token=${confirmToken}`;
+    await emailSv.sendEmail(email, 'Email Confirmation!', `Click here to confirm your account: ${confirmUrl}`);
+  }
+
+  res.status(201).json(new SuccessResponse(201, 'Please check your mail!', newUser));
 });
 
 /**

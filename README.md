@@ -1,1 +1,1 @@
-NQuiz-Server
+api-boiler
