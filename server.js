@@ -15,6 +15,11 @@ import errorHandler from './middleware/Errorhandler';
 import auth from './routes/auth';
 import user from './routes/user';
 import role from './routes/role';
+import dotenv from 'dotenv'
+
+
+dotenv.config()
+
 const app = express();
 
 //  Middlewares
