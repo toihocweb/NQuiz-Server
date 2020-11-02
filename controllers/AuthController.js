@@ -56,7 +56,6 @@ export const login = asyncMiddleware(async (req, res, next) => {
     if (await user.comparePassword(password)) {
       const payload = { _id, role, email, name };
       const token = userSv.getSignedJwtToken(payload);
-      const refreshToken = userSv.getSignedRefreshToken(payload);
       // set cookie token
       const options = {
         expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
@@ -70,7 +69,7 @@ export const login = asyncMiddleware(async (req, res, next) => {
       res
         .status(200)
         .cookie('token', token, options)
-        .json(new SuccessResponse(200, 'Login success', { token, refreshToken }));
+        .json(new SuccessResponse(200, 'Login success', { token }));
     } else {
       return next(new ErrorResponse(404, 'Password is incorrect', 'validation'));
     }
