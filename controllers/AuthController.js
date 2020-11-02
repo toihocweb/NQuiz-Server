@@ -24,6 +24,7 @@ export const register = asyncMiddleware(async (req, res) => {
   if (newUser) {
     const confirmToken = userSv.generateEmailConfirmToken();
     const confirmUrl = `${req.protocol}://${req.get('host')}/api/v1/auth/confirmemail?token=${confirmToken}`;
+    console.log(confirmUrl)
     await emailSv.sendEmail(email, 'Email Confirmation!', `Click here to confirm your account: ${confirmUrl}`);
   }
 
