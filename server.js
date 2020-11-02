@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger.json';
-import DatabaseConnection from './database/connectdb';
+import DatabaseConnection from './database/mongodb';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import xss from 'xss-clean';

@@ -1,4 +1,4 @@
-import db from '../connectdb';
+import db from '../mongodb';
 
 export default class GenericRepository {
   /**
