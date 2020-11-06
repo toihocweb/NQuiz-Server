@@ -21,9 +21,10 @@ export const register = asyncMiddleware(async (req, res) => {
 
   const newUser = await userSv.createNewUser(email, name, password);
 
+
   if (newUser) {
     const confirmToken = userSv.generateEmailConfirmToken();
-    const confirmUrl = `${req.protocol}://${req.get('host')}/api/v1/auth/confirmemail?token=${confirmToken}`;
+    const confirmUrl = `${process.env.FE_URL}/confirmemail?token=${confirmToken}`;
     console.log(confirmUrl)
     await emailSv.sendEmail(email, 'Email Confirmation!', `Click here to confirm your account: ${confirmUrl}`);
   }
@@ -49,9 +50,9 @@ export const login = asyncMiddleware(async (req, res, next) => {
   const user = await userSv.getUserByEmail(email, '+password');
 
   if (user) {
-    // if (!user.isEmailConfirmed) {
-    //   return next(new ErrorResponse(400, 'Please check your mail to confirm account', 'validation'));
-    // }
+    if (!user.isEmailConfirmed) {
+      return next(new ErrorResponse(400, 'Please check your mail to confirm account', 'validation'));
+    }
 
     const { _id, role, name, email } = user;
     if (await user.comparePassword(password)) {
@@ -129,6 +130,7 @@ export const confirmEmail = asyncMiddleware(async (req, res) => {
     },
     { confirmEmailToken: null, isEmailConfirmed: true }
   );
+  
   res.status(200).json(new SuccessResponse(200, 'Confirm Email successfully', user));
 });
 

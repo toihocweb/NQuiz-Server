@@ -41,7 +41,7 @@ Content-Type: application/json
 DELETE http://localhost:3000/api/v1/role HTTP/1.1
 
 ### delete all user
-DELETE http://localhost:3000/api/v1/user
+DELETE http://localhost:4000/api/v1/user
 
 ### reset password 
 PUT http://localhost:3000/api/v1/auth/resetpassword/61ac23944aba6001a2bfe1d5f5de4e5df87c8ea5 HTTP/1.1
