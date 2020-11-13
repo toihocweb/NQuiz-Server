@@ -14,11 +14,11 @@ import hpp from 'hpp';
 import errorHandler from './middleware/Errorhandler';
 import auth from './routes/auth';
 import user from './routes/user';
+import quiz from './routes/quiz';
 import role from './routes/role';
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
 
-
-dotenv.config()
+dotenv.config();
 
 const app = express();
 
@@ -47,6 +47,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/user', user);
 app.use('/api/v1/role', role);
+app.use('/api/v1/quiz', quiz);
 
 app.use(errorHandler);
 
